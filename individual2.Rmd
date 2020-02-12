@@ -1,0 +1,40 @@
+---
+title: "individual2"
+author: "Tanner Boyle"
+date: "2/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r }
+choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+head(choco)
+
+library(dplyr)
+library(ggplot2)
+
+choco %>% 
+  ggplot(aes(x=Rating)) +
+  geom_histogram(binwidth = 0.20)
+
+print(summary(choco$Rating))
+print(sd(choco$Rating))
+```
+## Problem 1:
+
+The histogram shows an approximate bell-shaped curve, meaning that the center can be identified as 3.191 (the mean) and spread of 0.475 (standard deviation). The mode is found around 3.5 and the max and min values are found at 1 and 5. the middle 50% of values are found between 3-3.5. I believe that there is only one outlier, which is found at 5. 
+
+```{r }
+
+choco %>% 
+  ggplot(aes(x=Rating, y=Cocoa.Pct)) +
+  geom_point()
+
+```
+
+## Problem 2:
+
+There is weak evidence, at best, that rating is beholden to cocoa percentage. I think that if we trained a linear model to predict Rating using only cocoa percentage (and an intercept) that it would perform poorly.
