@@ -1,0 +1,17 @@
+```{r}
+choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+summary(choco)
+```
+
+```{r}
+library(ggplot2)
+ggplot(choco, aes(x = Rating)) + geom_histogram()
+```
+It does look like there are 2 outliers at the 1 and 5 area.
+
+```{r}
+rates <- choco[, "Rating"]
+cocoa <- choco[, "Cocoa.Pct"]
+cor(cocoa, rates, method = c("pearson"))
+```
+Rating and Cocoa percentage are negatively correlated with each other. This means that ratings would be higher the lower the cocoa percentage.

@@ -48,6 +48,7 @@ choco %>%
 The three countries with the most ratings were USA, France, and Canada.
 
 ## Problem 4:
+### What is the average rating by bean origin?
 
 ```{r }
 beantypes <- choco %>% 
@@ -58,3 +59,5 @@ beantypes <- choco %>%
   arrange(-n)
 beantypes
 ```
+## Workflow:
+The workflow for this lab was much smoother than the previous. This is because both of us now have experience using Git and can callaborate without error. We didn't have any errors with pushing or pulling this lab but had a few in the first. With the experience in Git and communicating who does what, it made for an efficient lab.
