@@ -1,0 +1,60 @@
+---
+title: "team"
+author: "Tanner Boyle"
+date: "2/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r }
+choco <- read.csv("https://xdaiisu.github.io/ds202materials/hwlabs/choco.csv")
+head(choco)
+
+library(dplyr)
+library(ggplot2)
+
+str(choco)
+
+choco %>% 
+  ggplot(aes(x=Review.Date)) +
+  geom_bar() +
+  scale_x_continuous(name = "Year", limits = c(2005,2018
+                                               ))
+
+```
+
+## Problem 1: 
+
+There are 1852 observations.
+
+## Problem 2:
+
+The number of ratings appear to increase as time progresses up until a peak in 2015, whereafter ratings decrease two years in a row.
+
+```{r }
+choco %>% 
+  group_by(Company.Location) %>% 
+  summarise(n=n()) %>% 
+  as.data.frame() %>% 
+  arrange(-n)
+
+```
+
+## Problem 3:
+
+The three countries with the most ratings were USA, France, and Canada.
+
+## Problem 4:
+
+```{r }
+beantypes <- choco %>% 
+  group_by(Broad.Bean.Origin) %>% 
+  summarise(n=n(),
+            avg_rating = mean(Rating)) %>% 
+  as.data.frame() %>% 
+  arrange(-n)
+beantypes
+```
